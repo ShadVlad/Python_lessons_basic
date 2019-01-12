@@ -23,8 +23,7 @@ number_length = len(number_str)
 for i in range(number_length):
     print(i + 1,"-я цифра: ", number_str[i])
 
-
-
+print()
 
 # Задача-2: Исходные значения двух переменных запросить у пользователя.
 # Поменять значения переменных местами. Вывести новые значения на экран.
@@ -45,9 +44,15 @@ print()
 number_a = number_a + number_b
 number_b = number_a - number_b
 number_a = number_a - number_b
-print("А теперь число А = ", number_a, " а число B = ", number_b)
+print("А теперь число А = ", number_a, ", а число B = ", number_b)
 print()
 
+# решение через дополнительную переменную
+number_c = number_a
+number_a = number_b
+number_b = number_c
+print("И снова число А = ", number_a, ", а число B = ", number_b)
+print()
 
 # Задача-3: Запросите у пользователя его возраст.
 # Если ему есть 18 лет, выведите: "Доступ разрешен",
