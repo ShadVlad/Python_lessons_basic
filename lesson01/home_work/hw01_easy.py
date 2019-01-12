@@ -34,6 +34,20 @@ for i in range(number_length):
 # Не нужно решать задачу так:
 # print("a = ", b, "b = ", a) - это неправильное решение!
 
+print("Проограмма поменяет значения введеных Вами двух чисел")
+number_a = float(input("Введите число A: "))
+number_b = float(input("Введите число B: "))
+print()
+print("Вы вели число А: ", number_a, " и число B:", number_b)
+print()
+
+# через арифметические действия
+number_a = number_a + number_b
+number_b = number_a - number_b
+number_a = number_a - number_b
+print("А теперь число А = ", number_a, " а число B = ", number_b)
+print()
+
 
 # Задача-3: Запросите у пользователя его возраст.
 # Если ему есть 18 лет, выведите: "Доступ разрешен",
