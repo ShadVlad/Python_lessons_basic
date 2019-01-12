@@ -9,12 +9,21 @@ __author__ = 'Владимир Шадрин'
 
 # код пишем тут...
 print("Проограмма выведет цифры введеного Вами целого числа")
-number = int(input("Введите целое число: "))
+number_str = input("Введите целое число: ")
+number = int(number_str)
 print(number)
-
+print()
+# цикл while
 while number > 0:
     print(number%10)
     number = number // 10
+print()
+# цикл for
+number_length = len(number_str)
+for i in range(number_length):
+    print(i + 1,"-я цифра: ", number_str[i])
+
+
 
 
 # Задача-2: Исходные значения двух переменных запросить у пользователя.
