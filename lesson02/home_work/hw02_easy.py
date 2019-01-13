@@ -39,9 +39,21 @@ for fruit in fruits:
     if fruit in citrus:
         fruits.remove(fruit)
 
-print('new fruits : ',fruits)
+print('new fruits : ',fruits,'\n')
 
 # Задача-3:
 # Дан произвольный список из целых чисел.
 # Получите НОВЫЙ список из элементов исходного, выполнив следующие условия:
 # если элемент кратен двум, то разделить его на 4, если не кратен, то умножить на два.
+
+print('    -= Задача-3 =-\n')
+numbers = [1, 23, 28, 67, 79, 44, 34, 55]
+print('numbers: ',numbers,'\n')
+new_numbers = []
+for number in numbers:
+    if number % 2 == 0:
+        new_numbers.append(number / 4)
+    else:
+        new_numbers.append(number * 2)
+
+print('new_numbers : ', new_numbers)
