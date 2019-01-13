@@ -16,6 +16,8 @@
 print('    -= Задача-1 =-\n')
 
 fruits = ["яблоко", "банан", "киви", "арбуз"]
+print('fruits: ',fruits,'\nfruits в заданном формате:')
+
 i = 0
 for fruit in fruits:
     i += 1
@@ -27,6 +29,17 @@ print()
 # Даны два произвольные списка.
 # Удалите из первого списка элементы, присутствующие во втором списке.
 
+print('    -= Задача-2 =-\n')
+fruits = ["яблоко", "апельсин",'слива',"банан", "грейпфрут", "киви", "арбуз", "мандарин"]
+citrus = ["апельсин","грейпфрут", "мандарин"]
+print('fruits: ',fruits)
+print('citrus: ',citrus,'\n')
+
+for fruit in fruits:
+    if fruit in citrus:
+        fruits.remove(fruit)
+
+print('new fruits : ',fruits)
 
 # Задача-3:
 # Дан произвольный список из целых чисел.
