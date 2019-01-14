@@ -21,7 +21,7 @@ print('fruits: ',fruits,'\nfruits в заданном формате:')
 i = 0
 for fruit in fruits:
     i += 1
-    print('{:>2}. {:>9}'.format(i, fruit))
+    print(f'{i:>2}. {fruit:>9}')
 
 print()
 
