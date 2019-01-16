@@ -1,9 +1,39 @@
 # Задание-1: уравнение прямой вида y = kx + b задано в виде строки.
 # Определить координату y точки с заданной координатой x.
-
-equation = 'y = -12x + 11111140.2121'
-x = 2.5
+# equation = 'y = -12x + 11111140.2121'
+# x = 2.5
 # вычислите и выведите y
+
+# решение в рамках предложенных условиях  не предполагая более детальный анализ строки
+# достаточно выделить два коэффициента и их знак. В общем случае строка перебирается посимвольно
+
+print("\n    -= Задание 1 =-")
+
+equation = 'y = -12x + 11111140.2121'         # y = 10 x  -  140.21
+
+x = 2.5                                          # 4.55
+eq_with_space = equation.replace(" ", "")     # не принципиально на данном этапе
+
+y = 1
+index = eq_with_space.find("=")
+
+if eq_with_space[index + 1] == "-":
+    y = -1
+    index += 1
+
+index += 1
+index_x = eq_with_space.find("x")   # if eq_with_space[index: index_x - 1].isdigit():  мы знаем, что это число
+
+k = float(eq_with_space[index: index_x])
+y = y * k * x
+b = float(eq_with_space[index_x + 2:])
+
+if eq_with_space[index_x + 1] == " - ":
+    b = - b
+
+y = y + b
+print("Вычисляем ординату прямой ", equation)
+print(f"При х = {x},  y = {y}")
 
 
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
@@ -17,13 +47,50 @@ x = 2.5
 #  (т.е. 2 символа для дня, 2 - для месяца, 4 - для года)
 
 # Пример корректной даты
-date = '01.11.1985'
+# date = '01.11.1985'
 
 # Примеры некорректных дат
-date = '01.22.1001'
-date = '1.12.1001'
-date = '-2.10.3001'
+# date = '01.22.1001'
+# date = '1.12.1001'
+# date = '-2.10.3001'
 
+print("\n    -= Задание 2 =-")
+print("Анализируем коррекность ввода даты.\n")
+
+days_of_month = {"01": "31", "02": "28", "03": "31", "04": "30", "05": "31", "06": "30",
+                 "07": "31", "08": "31", "09": "30", "10": "31", "11": "30", "12": "31"}
+correct = False
+date = ""
+while not correct:
+    date = input("Ведите дату в формате 'dd.mm.yyyy' (Выход - 'q'): ")
+    date.strip(" ")
+    if len(date) == 10:
+        if (date[2] == ".") and (date[5] == "."):
+            day = date[0:2]
+            month = date[3:5]
+            year = date[6:]
+
+            if (int(month) < 13) and (int(month) > 0):
+                if (int(year) > 0) and (int(year) < 9999):
+                    if (int(day) > 0) and (int(day) <= int(days_of_month[month])):
+                        correct = True
+                    else:
+                        print("День должен быть в диапазоне от 01 до ", days_of_month[month])
+                else:
+                    print("Год должен быть в диапазоне от 0001 до 9999")
+            else:
+                print("Месяц должен быть в диапазоне от 01 до 12")
+
+        else:
+            print("Элементы даты должны быть разделены точками")
+    elif date == "q":
+        correct = True
+    else:
+        print("Дата должна содержать 10 символов")
+if date == "q":
+    print("\nОтказ пользователя")
+else:
+    print("Вы ввели дату правильно")
 
 # Задание-3: "Перевёрнутая башня" (Задача олимпиадного уровня)
 #
@@ -54,3 +121,33 @@ date = '-2.10.3001'
 #
 # Вход: 11
 # Выход: 5 3
+
+print("\n    -= Задание 3 =-")
+print("Вычисляем этаж и номер комнаты на этаже 'Башни' (1 ≤ N ≤ 2 000 000 000).\n")
+
+number_room = int(input("Введите номер комнаты: "))
+k = 0      # размерность очередного блока
+s0 = 0     # границы блока в котором находиеся комната
+s1 = 0
+count_floor = 0        # этаж перед искомым блоком
+floor_number = 0       # номер этажа в блоке
+room_sequence = 0      # номер комнаты на этаже
+
+while s1 < number_room:
+    count_floor += k
+    k += 1
+    s0 = s1
+    s1 = s1 + k * k
+    # print(k, count_floor, s0, s1)   вспогательный вывод, трассировка цикла
+
+for i in range(k):
+    for j in range(k):
+        floor_number = count_floor + (i + 1)
+        room_sequence = j + 1
+        s0 += 1
+        if s0 == number_room:
+            break
+    if s0 == number_room:
+        break
+
+print(f"Этаж: {floor_number}, комната: {room_sequence}")
