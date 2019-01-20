@@ -80,10 +80,14 @@ print("Проверка четырехугольника")
 def dist(a, b):
     return math.hypot(b[0] - a[0], b[1] - a[1])
 
+def isparallelogram(a, b, c, d):
+
+    return (dist(a, b) == dist(c, d)) and ((dist(b, c) == dist(a, d)) or (dist(a, c) == dist(b, d)))
+
 
 a1 = [1, 2]
 a2 = [1, 6]
 a3 = [4, 3]
 a4 = [4, 7]
 print(a1, a2, a3, a4)
-print((dist(a1, a2) == dist(a3, a4)) and ((dist(a2, a3) == dist(a1, a4)) or (dist(a1, a3) == dist(a2, a4))))
+print(isparallelogram(a1, a2, a3, a4))
