@@ -13,3 +13,41 @@
 # Для решения данной задачи используйте алгоритмы из задания easy,
 # оформленные в виде соответствующих функций,
 # и импортированные в данный файл из easy.py
+
+import os
+import sys
+from mylib.easy import make_dirs, list_dir, remove_dirs
+
+
+while True:
+    print("\n -= Выберите действие =-\n")
+    print("1: Перейти в папку")
+    print("2: Просмотреть содержимое текущей папки")
+    print("3: Удалить папку")
+    print("4: Создать папку")
+    print("q: Выход")
+    task = input()
+
+    if task == 'q':
+        print("Скрипт завершен")
+        break
+
+    elif task == '1':
+        dir_name = input("Введите название папки: ")
+        file_list = list_dir(True)
+        if dir_name in file_list:
+            os.chdir(dir_name)
+            print(f"Успешно перешли в папку {dir_name}", os.getcwd())
+        else:
+            print("Такой папки нет!")
+
+    elif task == '2':
+        print(list_dir())
+
+    elif task == '3':
+        dir_name = input("Введите название папки: ")
+        remove_dirs([dir_name])
+
+    elif task == '4':
+        dir_name = input('Введите название папки: ')
+        make_dirs([dir_name])
